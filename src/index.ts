@@ -7,7 +7,7 @@ import error from './middlewares/error';
 
 // Import commands
 
-const bot = new Telegraf(process.env.BOT_API_TOKEN);
+const bot: Telegraf = new Telegraf(process.env.BOT_API_TOKEN);
 
 bot.use(reply);
 bot.use(error);
