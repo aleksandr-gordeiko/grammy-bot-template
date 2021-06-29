@@ -1,11 +1,13 @@
 import {// Import necessary reply_codes
 } from './reply_codes';
 
+import { Db } from 'mongodb';
+
 const { MongoClient } = require('mongodb');
 
 const url: string = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/`;
-let client;
-let db;
+let client: typeof MongoClient;
+let db: Db;
 
 const connect = async (): Promise<void> => {
   try {
