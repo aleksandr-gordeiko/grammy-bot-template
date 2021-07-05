@@ -1,5 +1,5 @@
 import { Telegraf } from 'telegraf';
-import { connect, closeConnection } from './db';
+import { connectDB, closeConnection } from './db';
 
 import reply from './middlewares/reply';
 import error from './middlewares/error';

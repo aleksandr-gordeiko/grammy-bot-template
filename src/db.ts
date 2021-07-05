@@ -1,18 +1,14 @@
 import {// Import necessary reply_codes
 } from './reply_codes';
 
-import { Db } from 'mongodb';
+import { connect, connection } from 'mongoose';
 
-const { MongoClient } = require('mongodb');
+const url: string = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB_NAME}`;
+let db: typeof import('mongoose');
 
-const url: string = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/`;
-let client: typeof MongoClient;
-let db: Db;
-
-const connect = async (): Promise<void> => {
+const connectDB = async (): Promise<void> => {
   try {
-    client = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-    db = client.db(process.env.MONGO_DB_NAME);
+    db = await connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
   } catch (err) {
     throw new Error(`DB connection error: ${err}`);
   }
@@ -20,7 +16,7 @@ const connect = async (): Promise<void> => {
 
 const closeConnection = async (): Promise<void> => {
   try {
-    await client.close();
+    await connection.close();
   } catch (err) {
     throw new Error('DB connection closure fail');
   }
@@ -29,7 +25,7 @@ const closeConnection = async (): Promise<void> => {
 // Your db interaction functions here
 
 export {
-  connect,
+  connectDB,
   closeConnection,
   // Export your db interaction functions
 };
