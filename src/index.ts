@@ -26,6 +26,6 @@ process.once('SIGTERM', () => {
     .catch(() => console.log('SIGTERM occurred, exiting with no db connection closed'));
 });
 
-connect()
+connectDB()
   .then(() => bot.launch())
   .catch((err) => console.log(err));
