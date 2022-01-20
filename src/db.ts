@@ -1,6 +1,3 @@
-import {// Import necessary reply_codes
-} from './reply_codes';
-
 import { connect, connection } from 'mongoose';
 
 const url: string = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DB_NAME}`;

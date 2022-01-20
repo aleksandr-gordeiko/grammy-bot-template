@@ -5,7 +5,7 @@
 </p>
 <ul>
     <li>Node.js with Typescript as a core</li>
-    <li>Telegraf.js as a framework for interaction with Telegram</li>
+    <li>Grammy.js as a framework for interaction with Telegram</li>
     <li>Mongo DB as a database</li>
     <li>typegram for Telegram typings</li>
     <li>dotenv for handling environment variables</li>

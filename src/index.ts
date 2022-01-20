@@ -1,15 +1,13 @@
-import { Telegraf } from 'telegraf';
+import { Bot } from 'grammy/out/bot';
 import { connectDB, closeConnection } from './db';
 
-import reply from './middlewares/reply';
 import error from './middlewares/error';
 // Import other middlewares
 
 // Import commands
 
-const bot: Telegraf = new Telegraf(process.env.BOT_API_TOKEN);
+const bot: Bot = new Bot(process.env.BOT_API_TOKEN);
 
-bot.use(reply);
 bot.use(error);
 // Use other middlewares
 
@@ -27,5 +25,5 @@ process.once('SIGTERM', () => {
 });
 
 connectDB()
-  .then(() => bot.launch())
+  .then(() => bot.start())
   .catch((err) => console.log(err));
